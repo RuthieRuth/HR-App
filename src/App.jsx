@@ -1,15 +1,21 @@
-
-import './App.css'
+import "./App.css";
+import Header from "./components/Header/Header.jsx";
+import EmployeeList from "./components/EmployeeList/EmployeeList";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div></div>
-      
+      <div>
+        <Header/>
+        <main>
+          <h1>EMPLOYEES</h1>
+          <EmployeeList />
+        </main>
+        <Footer/>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
