@@ -14,9 +14,9 @@ const EmployeeCard = (props) => {
         }  
     }
 
-    return (
-        <div> 
-            <h3>Employee Details</h3>
+    return ( // maybe add a className to the div
+        <div>  
+            <h4>Employee Details</h4>
             <p>Name: {props.name}</p>
             <p>Role: {role}</p>
             <p>Department: {props.dept}</p>
