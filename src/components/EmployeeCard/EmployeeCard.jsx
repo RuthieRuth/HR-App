@@ -1,30 +1,37 @@
 import { useState } from 'react'
+import './EmployeeCard.css'
+// import EmployeeList from '../EmployeeList/EmployeeList';
 
-const EmployeeCard = (props) => { 
-    console.log(props)
+    const EmployeeCard = (props) => { 
+            // console.log(props)
+            const initialRole = props.role;
+            const [role, setRole] = useState (initialRole);
+           
+        
+             const clickHandler = () => {
+             //console.log('I was clicked');
+                setRole(role === 'Team Lead' ? initialRole : 'Team Lead')
+            }; 
 
-    const [role, setRole] = useState (props.initialRole);
-
-    const clickHandler = () => {
-        // console.log('I was clicked');
-        if (role === "Team Lead"){
-            setRole(props.initialRole);
-        }
-        else{setRole('Team Lead') ;
-        }  
-    }
-
-    return ( // maybe add a className to the div
-        <div>  
-            <h4>Employee Details</h4>
+    return (       
+        <div className='cardTemplate'>  
             <p>Name: {props.name}</p>
-            <p>Role: {role}</p>
             <p>Department: {props.dept}</p>
-            <p>Level: {props.level}</p>
-            <p>Salary:{props.salary}</p>
-            <button onClick={clickHandler}>Promote</button>
+            <p>Role: {role}</p>
+            <p>Start: {props.start}</p>
+            <p>location:{props.location}</p>
+            <p>email:{props.email}</p>
+            <p>status:{props.status}</p> 
+            <div>
+                {role === initialRole ? 
+                    (<button onClick={clickHandler}>Promote to Team Lead</button>) : 
+                    (<button onClick={clickHandler}>Remove as Team Lead</button>)
+                }
+             </div>
         </div>
     );
+
+   
 }
 
 export default EmployeeCard;

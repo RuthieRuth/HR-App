@@ -1,11 +1,13 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-body{
-  background-color: rgb(254, 241, 233);
+.loginpg{
+  justify-content: center;
+  align-content: center;
+  margin-top: 22rem;
 }
+
+
 
