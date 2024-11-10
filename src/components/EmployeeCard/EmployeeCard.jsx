@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './EmployeeCard.css'
+// import star from './assets/star.svg'
 // import EmployeeList from '../EmployeeList/EmployeeList';
 
     const EmployeeCard = (props) => { 
             // console.log(props)
             const initialRole = props.role;
             const [role, setRole] = useState (initialRole);
-           
+            const star = "./assets/star.svg'";
         
              const clickHandler = () => {
              //console.log('I was clicked');
@@ -15,6 +16,11 @@ import './EmployeeCard.css'
 
     return (       
         <div className='cardTemplate'>  
+            <div>
+                {/* {role === 'Team Lead' ? star : ''}</div> */}
+                {role === 'Team Lead' ? <img src={star} className="logo" alt="star"/> : ''}
+            </div>
+
             <p>Name: {props.name}</p>
             <p>Department: {props.dept}</p>
             <p>Role: {role}</p>

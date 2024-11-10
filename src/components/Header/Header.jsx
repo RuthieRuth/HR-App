@@ -1,7 +1,7 @@
 const Header = () => {
     return (
             <header>
-                <h1>EMPLOYEE LIST</h1>
+                {/* <h1>EMPLOYEE LIST</h1> */}
             </header>
     )
 }
