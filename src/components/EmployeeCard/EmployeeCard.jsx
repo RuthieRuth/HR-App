@@ -52,7 +52,7 @@ import calcYrsWorked from '../data/yrCalculator';
 
                 <p>Name: {name}</p>
                 <p>Department: {dept}</p>
-                <p>Role: {promotedRole}</p>
+                <p>Role: {role}</p>
                 <p>Start: {start}</p>
                 
                 {isEditing 

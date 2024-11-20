@@ -1,11 +1,10 @@
-import { createBrowserRouter, Form } from "react-router-dom";
-import Root from "../Pages/root";
+import { createBrowserRouter } from "react-router-dom";
+import Root from "../Pages/Root";
 import ErrorPage from "../Pages/ErrorPage";
 
 import Login from "../Pages/Login";
 import List from "../Pages/List";
-
-
+import Form from "../Pages/Form";
 
 
 export const router = createBrowserRouter(

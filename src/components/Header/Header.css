@@ -1,0 +1,22 @@
+.header-container{
+    background-color: antiquewhite;
+    border: none;
+    display: flex; 
+    justify-content: space-between;
+     /* height: 100px;
+    align-items: center;
+    justify-content: center; */
+}
+
+.logo-section{
+    margin-left: 50px ;
+}
+
+.nav-section nav ul {
+    justify-content: flex-end;
+    list-style: none;
+    gap: 20px;
+    display: flex;
+    margin-right: 50px;
+}
+

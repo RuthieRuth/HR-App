@@ -1,0 +1,18 @@
+.form-container{
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    display: flex;
+}
+
+.form-input{
+    padding: 5px;
+}
+
+.form-input input{
+    width: 300px;
+    padding: 5px;
+    border: 1px;
+    border-radius: 10px;
+    
+}
