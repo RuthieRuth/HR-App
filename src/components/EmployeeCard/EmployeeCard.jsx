@@ -6,11 +6,9 @@ import calcYrsWorked from '../data/yrCalculator';
 // import EmployeeList from '../EmployeeList/EmployeeList';
 
     const EmployeeCard = ({name, dept, start, location, email, status, role}) => { 
-            // console.log(props)
-
-        // ROLE (PROMOTED OR NOT)
-        const initialRole = role;
+        const [currentlocation , setLocation] = useState(location);
         const [promotedRole, setPromotedRole] = useState (role);
+        const [isEditing, setIsEditing] = useState(false);
          
         // PROMOTE AND DEMOTE TOGGLE BUTTON
         const clickHandler = () => {
@@ -18,6 +16,10 @@ import calcYrsWorked from '../data/yrCalculator';
             setPromotedRole(promotedRole === 'Team Lead' ? role : 'Team Lead')
         }; 
 
+        const toggleEdit = () => setIsEditing ( (prev) => !prev );
+        const handleChange = (event) => setLocation(event.target.value);
+
+        // DEPARTMENT COLOUR CHANGE
         const colorCard = {
             border: `4px solid ${dept === 'Sales and Marketing' ? 'blue' : 
                                  dept === 'Product Development' ? 'red':
@@ -52,7 +54,12 @@ import calcYrsWorked from '../data/yrCalculator';
                 <p>Department: {dept}</p>
                 <p>Role: {promotedRole}</p>
                 <p>Start: {start}</p>
-                <p>location:{location}</p>
+                
+                {isEditing 
+                    ? (<input type="text" value={currentlocation} onChange={handleChange} />) 
+                    : (<p>location: {currentlocation}</p>)
+                }
+                
                 <p>email:{email}</p>
                 <p>status:{status}</p> 
                 
@@ -66,10 +73,27 @@ import calcYrsWorked from '../data/yrCalculator';
                         (<Button onClick={clickHandler} text={"Remove as Team Lead"}/>)
                     } */}
 
-                    <Button onClick={clickHandler} text={promotedRole === role ? "Promote to Team Lead" : "Remove as Team Lead"} roleColor={promotedRole === role ? 'primary' : 'secondary'}/>
+                    <Button 
+                        onClick={clickHandler} 
+                        text={promotedRole === role ? "Promote to Team Lead" : "Remove as Team Lead"} 
+                        roleColor={promotedRole === role ? 'primary' : 'secondary'}/>
 
-                    <Button onClick = {() => console.log("showing you")} text={"Something"}/>
+                    <div className='this works dont delete'>
+                   {/*  <Button 
+                        onClick={() => {toggleEdit(); console.log("showing you");}} 
+                        text={isEditing ? 'Save' : 'Edit'} 
+                    /> */}
+
                     
+                    <Button 
+                        onClick={() => {toggleEdit(); console.log("showing me");}} 
+                        text={isEditing ? 'Save' : 'Edit'} 
+                    />
+
+                     {/* <Button onClick = {clickHandler} text={editing ? "Save": "Edit"}/>  */}
+                    </div> 
+       
+          
                 </div>
 
             </div>
