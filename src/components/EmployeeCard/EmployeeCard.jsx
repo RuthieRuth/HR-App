@@ -6,9 +6,14 @@ import calcYrsWorked from '../data/yrCalculator';
 // import EmployeeList from '../EmployeeList/EmployeeList';
 
     const EmployeeCard = ({name, dept, start, location, email, status, role}) => { 
-        const [currentlocation , setLocation] = useState(location);
-        const [promotedRole, setPromotedRole] = useState (role);
+
         const [isEditing, setIsEditing] = useState(false);
+
+        const [currentlocation , setLocation] = useState(location);
+        const [currentdepartment , newDepartment] = useState(dept);
+
+        const [promotedRole, setPromotedRole] = useState (role);
+       
          
         // PROMOTE AND DEMOTE TOGGLE BUTTON
         const clickHandler = () => {
@@ -17,13 +22,22 @@ import calcYrsWorked from '../data/yrCalculator';
         }; 
 
         const toggleEdit = () => setIsEditing ( (prev) => !prev );
-        const handleChange = (event) => setLocation(event.target.value);
+        // const handleChange = (event) => setLocation(event.target.value);
+
+        const handleChange = (event) => { 
+            const {name, value} = event.target;
+            if (name === 'dept') {
+                newDepartment(value);
+            } else if(name === 'location'){
+                setLocation(value);
+            }
+        }
 
         // DEPARTMENT COLOUR CHANGE
         const colorCard = {
-            border: `4px solid ${dept === 'Sales and Marketing' ? 'blue' : 
-                                 dept === 'Product Development' ? 'red':
-                                 dept === 'Customer Support' ? 'violet' : 'pink'}`,
+            border: `4px solid ${currentdepartment === 'Sales and Marketing' ? 'blue' : 
+                currentdepartment === 'Product Development' ? 'red':
+                currentdepartment === 'Customer Support' ? 'violet' : 'pink'}`,
             borderRadius: '10px'}  
 
         // HOW LONG THE EMPLOYEE HAS WORKED HERE
@@ -51,12 +65,17 @@ import calcYrsWorked from '../data/yrCalculator';
                 </div>
 
                 <p>Name: {name}</p>
-                <p>Department: {dept}</p>
+
+                {isEditing 
+                    ? (<input type="text" name="dept" value={currentdepartment} onChange={handleChange} />) 
+                    : (<p>Department: {currentdepartment}</p>)
+                }
+                
                 <p>Role: {role}</p>
                 <p>Start: {start}</p>
                 
                 {isEditing 
-                    ? (<input type="text" value={currentlocation} onChange={handleChange} />) 
+                    ? (<input type="text" name="location"value={currentlocation} onChange={handleChange} />) 
                     : (<p>location: {currentlocation}</p>)
                 }
                 
@@ -68,34 +87,17 @@ import calcYrsWorked from '../data/yrCalculator';
                 </div> 
 
                 <div>
-                    {/* {role === initialRole ? 
-                        (<Button onClick={clickHandler} text={"Promote to Team Lead"} roleColor={}/>) : 
-                        (<Button onClick={clickHandler} text={"Remove as Team Lead"}/>)
-                    } */}
-
                     <Button 
                         onClick={clickHandler} 
                         text={promotedRole === role ? "Promote to Team Lead" : "Remove as Team Lead"} 
                         roleColor={promotedRole === role ? 'primary' : 'secondary'}/>
 
-                    <div className='this works dont delete'>
-                   {/*  <Button 
-                        onClick={() => {toggleEdit(); console.log("showing you");}} 
-                        text={isEditing ? 'Save' : 'Edit'} 
-                    /> */}
-
-                    
                     <Button 
                         onClick={() => {toggleEdit(); console.log("showing me");}} 
-                        text={isEditing ? 'Save' : 'Edit'} 
-                    />
+                        text={isEditing ? 'Save' : 'Edit'} />
 
                      {/* <Button onClick = {clickHandler} text={editing ? "Save": "Edit"}/>  */}
-                    </div> 
-       
-          
-                </div>
-
+                </div> 
             </div>
         );
 }

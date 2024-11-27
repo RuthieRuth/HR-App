@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EmployeeList from "../components/EmployeeList/EmployeeList";
+import './login.css'
 
 const Login = () => {
     const [loginButton,loggedIn]= useState(false)
@@ -9,7 +10,7 @@ const Login = () => {
         <main>
         {loginButton 
         ? (
-            <div>
+            <div className="login-container">
               <h3>LIST OF EMPLOYEES (exchange progamme)</h3>
               <EmployeeList props={loginButton}/>
               <button onClick={handlelogIn}>Log out</button></div>) 
