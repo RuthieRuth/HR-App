@@ -41,16 +41,18 @@ npm run dev
 - Modify the header to include a menu with nav links: employees, add new employees
 - Prepare form component to take new employees
 
+#### week 5
+- make a form component. 
+- install axios and json server (fake backend) to fetch employeelist from there:
+  . install axios
+  . npm install --save-dev json-server@latest 
+- make a new file; db.json and convert employeeData to json file.
+  . run: npm run server to give a 'server' with the list
+* it needs to fetch so place it where there there is map ie. employeeList
 
 
 
 
-make a form with arrow function that has a 1.const with useState with role, dept and location
-
-then make a 2.const handlechandge that take name n value = e.target ie, on the trigger of the event, it should target name n value + setting the form in previous state (prevState) => ({..prevState, [name]: value})
-
-return a div with the form- input
 
 
-use for form for input
---------------------
+
