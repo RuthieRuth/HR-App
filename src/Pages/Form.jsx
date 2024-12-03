@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import './styles.css'
+import './formStyles.css'
 
 const Form = () => {
     const [newDetails, setNewDetails] = useState(
@@ -24,7 +24,7 @@ const Form = () => {
 // SUBMIT THE FORM 
     const submitBtn = () => {
         //needs to be added to the list
-        (axios.post("http://localhost:3002/persons", newDetails)
+        (axios.post("http://localhost:3001/persons", newDetails)
         .then((response) => {
             console.log("Data posted successfully:", response.data);
             })

@@ -14,6 +14,7 @@ const Header = () => {
                 <ul>
                     <li><NavLink to="/list">View Employees</NavLink></li>
                     <li><NavLink to="/form">Add new employees </NavLink></li>
+                    
                 </ul>
             </nav>
             </div>
