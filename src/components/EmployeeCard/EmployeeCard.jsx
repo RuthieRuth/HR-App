@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import './EmployeeCard.css'
 import Button from '../Button/Button';
 import star from "../../assets/star.svg"
 import calcYrsWorked from '../data/yrCalculator';
+import { useNavigate } from 'react-router-dom';
 // import EmployeeList from '../EmployeeList/EmployeeList';
 
-    const EmployeeCard = ({name, dept, start, location, email, status, role}) => { 
+    const EmployeeCard = ({name, dept, start, location, email, status, role, id}) => { 
 
         const [isEditing, setIsEditing] = useState(false);
 
@@ -13,7 +14,9 @@ import calcYrsWorked from '../data/yrCalculator';
         const [currentdepartment , newDepartment] = useState(dept);
 
         const [promotedRole, setPromotedRole] = useState (role);
+        const navigate = useNavigate();
        
+        // const [images, setImages]=useState([]);
          
         // PROMOTE AND DEMOTE TOGGLE BUTTON
         const clickHandler = () => {
@@ -46,22 +49,48 @@ import calcYrsWorked from '../data/yrCalculator';
 
         function getreviewMessage(yearsWorked) {
             if (yearsWorked >=5 || yearsWorked >=10 || yearsWorked >=15) {
-                return 'Recog meeting';
+                return 'Schedule Recog meeting';
         } else if (yearsWorked < 0.6) {
-            return 'Probation check in';
+            return 'Probation check-in';
         } else {
             return ''; 
             }
         }
         const reviewMessage = getreviewMessage(yearsWorked);
 
+        // GET IMAGES OF EMPLOYEES
+        useEffect(() => {
+            async function fetchEmployee() {
+                try {
+                    let imageResponse = await fetch('../db.json/persons');
+                    let imageData= await imageResponse.json();
+                    
+    
+                    for (let employee of imageData){
+                        let imageResponse = await fetch (`https://robohash.org/${employee.id}.png?set=set4`);
+                        console.log(imageResponse);
+    
+                        if(!imageResponse.ok){throw new Error('no image');  
+                        }}
+                    } 
+                catch (error) {
+                        console.log(error)
+                    }
+                }
+                fetchEmployee();
+        }, []);
+
         
+
         return (       
             <div className='cardTemplate' style={colorCard}>  
             
                 <div>
-                    {/* {role === 'Team Lead' ? star : ''}</div> */}
                     {promotedRole === 'Team Lead' ? <img src={star} className="logo" alt="star"/> : ''}
+                </div>
+
+                <div className='empImg'>Employee Image 
+                    
                 </div>
 
                 <p>Name: {name}</p>
@@ -97,6 +126,9 @@ import calcYrsWorked from '../data/yrCalculator';
                         text={isEditing ? 'Save' : 'Edit'} />
 
                      {/* <Button onClick = {clickHandler} text={editing ? "Save": "Edit"}/>  */}
+
+                     <Button text="see more" onClick={()=> navigate(`/list/${id}`)}/>
+                     
                 </div> 
             </div>
         );

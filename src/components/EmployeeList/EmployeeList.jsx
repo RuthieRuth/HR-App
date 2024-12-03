@@ -1,5 +1,5 @@
 import EmployeeCard from '../EmployeeCard/EmployeeCard.jsx'
-// import employeeData from '../data/employeeData.js'
+//import employeeData from '../data/employeeData.js'
 import {useState, useEffect} from "react"
 import axios from 'axios';
 import './EmployeeList.css';
@@ -12,9 +12,8 @@ import './EmployeeList.css';
     const [posts, setPosts] = useState ([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    
 
-    // using useEffect
+    // using useEffect with fetch
    /*  useEffect (() => {
       fetch("http://localhost:3002/persons")
       .then ((response) => response.json())
@@ -24,7 +23,7 @@ import './EmployeeList.css';
       });
     }, []) */
 
-    // use axios
+    // use axios with useEffect
     useEffect(() => {
       axios.get("http://localhost:3002/persons")
         .then((response) => {
@@ -45,14 +44,8 @@ import './EmployeeList.css';
         {isLoading ? ( <p>Loading..</p> ) :
         (posts.map((employee) => (
           <EmployeeCard
-            key={employee.id}
-            name={employee.name}
-            dept={employee.dept}
-            role={employee.role}
-            start={employee.start}
-            location={employee.location}
-            email={employee.email}
-            status={employee.status} />
+            key={employee.id} {...employee}
+            />
         )))}
        </div>   
   );
