@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router-dom';
             } else if(name === 'location'){
                 setLocation(value);
             }
-        }
+        };
 
         // DEPARTMENT COLOUR CHANGE
         const colorCard = {
@@ -64,7 +64,6 @@ import { useNavigate } from 'react-router-dom';
                 try {
                     let imageResponse = await fetch('../db.json/persons');
                     let imageData= await imageResponse.json();
-                    
     
                     for (let employee of imageData){
                         let imageResponse = await fetch (`https://robohash.org/${employee.id}.png?set=set4`);
@@ -78,9 +77,7 @@ import { useNavigate } from 'react-router-dom';
                     }
                 }
                 fetchEmployee();
-        }, []);
-
-        
+            }, []);
 
         return (       
             <div className='cardTemplate' style={colorCard}>  
@@ -89,9 +86,7 @@ import { useNavigate } from 'react-router-dom';
                     {promotedRole === 'Team Lead' ? <img src={star} className="logo" alt="star"/> : ''}
                 </div>
 
-                <div className='empImg'>Employee Image 
-                    
-                </div>
+                <div className='empImg'>Employee Image</div>
 
                 <p>Name: {name}</p>
 

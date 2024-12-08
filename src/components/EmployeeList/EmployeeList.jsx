@@ -42,10 +42,7 @@ import './EmployeeList.css';
 
       <div className='list'>
         {isLoading ? ( <p>Loading..</p> ) :
-        (posts.map((employee) => (
-          <EmployeeCard
-            key={employee.id} {...employee}
-            />
+        (posts.map((employee) => (<EmployeeCard key={employee.id} {...employee}/>
         )))}
        </div>   
   );

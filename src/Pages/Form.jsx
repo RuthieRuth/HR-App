@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import './formStyles.css'
 
+
+
+//possible to also store each input as a variable with useState
 const Form = () => {
     const [newDetails, setNewDetails] = useState(
                                                 { id: "",
@@ -31,9 +34,11 @@ const Form = () => {
         .catch((error) => {
              console.error("Error posting data:", error);
     }));
+
+
     }
 
-        event.preventDefault();
+        event.preventDefault(); // move into submitBtn '?
 
     return (
         <div className="form-container">
