@@ -17,10 +17,14 @@ const PersonalEmployeePage = () => {
 
     return(
         <div> 
-            <h3> Full Employee data</h3> 
-            <p>{employee.name}</p>
+            <h3> FULL EMPLOYEE DATA</h3> 
+            <p>Name: {employee.name}</p>
+            <p>Email: {employee.dept} </p>
+            <p>Role: {employee.role} </p>
+            <p>Starting date: {employee.start} </p>
+            <p>Location: {employee.location} </p>
             <p>Email: {employee.email} </p>
-            <p>Status:{employee.status} </p>
+            <p>Status: {employee.status} </p>
 
             <Button text='Back to list' onClick={() => navigate(-1)} />
         </div>

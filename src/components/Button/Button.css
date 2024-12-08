@@ -1,7 +1,15 @@
 .primary {
-    background-color: green;
+    background-color: rgb(2, 149, 212);
+    color: aliceblue;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .secondary {
     background-color: red;
+    color: aliceblue;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }

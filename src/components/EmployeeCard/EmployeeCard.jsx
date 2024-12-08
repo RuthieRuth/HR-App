@@ -82,13 +82,15 @@ import { useNavigate } from 'react-router-dom';
         return (       
             <div className='cardTemplate' style={colorCard}>  
             
-                <div>
+                <div className='banner'>
+
                     {promotedRole === 'Team Lead' ? <img src={star} className="logo" alt="star"/> : ''}
+
                 </div>
 
                 <div className='empImg'>Employee Image</div>
 
-                <p>Name: {name}</p>
+                <p><strong>{name}</strong></p>
 
                 {isEditing 
                     ? (<input type="text" name="dept" value={currentdepartment} onChange={handleChange} />) 
@@ -96,24 +98,22 @@ import { useNavigate } from 'react-router-dom';
                 }
                 
                 <p>Role: {role}</p>
-                <p>Start: {start}</p>
                 
                 {isEditing 
                     ? (<input type="text" name="location"value={currentlocation} onChange={handleChange} />) 
-                    : (<p>location: {currentlocation}</p>)
+                    : (<p>Location: {currentlocation}</p>)
                 }
                 
-                <p>email:{email}</p>
-                <p>status:{status}</p> 
+                <p>{email}</p>
                 
                 <div>
-                    {`${yearsWorked} years today. ${reviewMessage}`}
+                    {`${yearsWorked}yrs today. ${reviewMessage}`}
                 </div> 
 
-                <div>
+                <div className='buttons'>
                     <Button 
                         onClick={clickHandler} 
-                        text={promotedRole === role ? "Promote to Team Lead" : "Remove as Team Lead"} 
+                        text={promotedRole === role ? "Team Lead Promotion" : "Remove as Team Lead"} 
                         roleColor={promotedRole === role ? 'primary' : 'secondary'}/>
 
                     <Button 
@@ -122,7 +122,7 @@ import { useNavigate } from 'react-router-dom';
 
                      {/* <Button onClick = {clickHandler} text={editing ? "Save": "Edit"}/>  */}
 
-                     <Button text="see more" onClick={()=> navigate(`/list/${id}`)}/>
+                     <Button text="See more" onClick={()=> navigate(`/list/${id}`)}/>
                      
                 </div> 
             </div>

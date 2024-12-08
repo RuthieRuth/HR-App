@@ -1,14 +1,39 @@
 .cardTemplate{
-    background-color: orange;
+    background-color: rgb(255, 255, 255);
     width:300px;
     margin: 0.5rem;
     padding: 20px;
 }
 
-.lightblue{
-    background-color: #f526dd;
+button{
+    background-color: rgb(120, 118, 118);
+    color: aliceblue;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.pink{
-    background-color: rgb(13, 201, 0);
+.banner{
+    display: flex;
 }
+
+.banner button{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+input{
+    border: 1px solid grey;
+    padding:5px;
+    border-radius: 5px;
+}
+
+
+

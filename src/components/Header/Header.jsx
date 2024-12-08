@@ -6,7 +6,7 @@ const Header = () => {
         <div className="header-container">
             <div className="logo-section">
                 <h2>
-                    <NavLink to="/">LOGO</NavLink>
+                    <NavLink to="/">BlueBird Publishers</NavLink>
                 </h2>
             </div>
             <div className="nav-section">
