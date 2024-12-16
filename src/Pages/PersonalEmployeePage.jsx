@@ -7,7 +7,6 @@ const PersonalEmployeePage = () => {
     // useState and useEffect with axios to get data again, then search with find the correct one
     // OR get the object based on id
 
-    
     // console.log('employee id:', id);
 
     //for the button
@@ -21,12 +20,13 @@ const PersonalEmployeePage = () => {
             <p>Name: {employee.name}</p>
             <p>Email: {employee.dept} </p>
             <p>Role: {employee.role} </p>
-            <p>Starting date: {employee.start} </p>
+            <p>Start date: {employee.start} </p>
             <p>Location: {employee.location} </p>
             <p>Email: {employee.email} </p>
             <p>Status: {employee.status} </p>
 
             <Button text='Back to list' onClick={() => navigate(-1)} />
+                {/* -1 takes it to log in but /list takes it back to list with no log out btn, why? */}
         </div>
     )
 };

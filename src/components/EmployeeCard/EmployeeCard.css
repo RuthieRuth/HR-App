@@ -13,8 +13,10 @@ button{
     border-radius: 5px;
 }
 
-.banner{
-    display: flex;
+.banner img{
+    width: 40px;
+    height: 40px;
+
 }
 
 .banner button{
@@ -33,6 +35,16 @@ input{
     border: 1px solid grey;
     padding:5px;
     border-radius: 5px;
+}
+
+.empImg img{
+  
+   width: 200px;
+}
+
+.cardHeader{
+    display: flex;
+    justify-content: space-between;
 }
 
 

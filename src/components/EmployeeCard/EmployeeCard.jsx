@@ -62,7 +62,7 @@ import { useNavigate } from 'react-router-dom';
         useEffect(() => {
             async function fetchEmployee() {
                 try {
-                    let imageResponse = await fetch('../db.json/persons');
+                    let imageResponse = await fetch( 'http://localhost:3002/persons');
                     let imageData= await imageResponse.json();
     
                     for (let employee of imageData){
@@ -81,27 +81,31 @@ import { useNavigate } from 'react-router-dom';
 
         return (       
             <div className='cardTemplate' style={colorCard}>  
+
+            <div className='cardHeader'>
             
                 <div className='banner'>
-
                     {promotedRole === 'Team Lead' ? <img src={star} className="logo" alt="star"/> : ''}
-
                 </div>
 
-                <div className='empImg'>Employee Image</div>
+                <div className='empImg'>
+                <img src={`https://robohash.org/${id}.png?set=set5`} alt="employeeImage" />
+                </div>
+
+            </div>
 
                 <p><strong>{name}</strong></p>
 
                 {isEditing 
                     ? (<input type="text" name="dept" value={currentdepartment} onChange={handleChange} />) 
-                    : (<p>Department: {currentdepartment}</p>)
+                    : (<p>{currentdepartment}</p>)
                 }
                 
-                <p>Role: {role}</p>
+                <p>{role}</p>
                 
                 {isEditing 
                     ? (<input type="text" name="location"value={currentlocation} onChange={handleChange} />) 
-                    : (<p>Location: {currentlocation}</p>)
+                    : (<p>{currentlocation}</p>)
                 }
                 
                 <p>{email}</p>

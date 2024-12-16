@@ -35,7 +35,6 @@ import './EmployeeList.css';
         });
     }, []);
 
-
     // console.log (posts);
 
    return (
