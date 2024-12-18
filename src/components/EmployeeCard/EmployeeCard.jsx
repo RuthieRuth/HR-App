@@ -97,14 +97,14 @@ import { useNavigate } from 'react-router-dom';
                 <p><strong>{name}</strong></p>
 
                 {isEditing 
-                    ? (<input type="text" name="dept" value={currentdepartment} onChange={handleChange} />) 
+                    ? (<input type="text" name="dept" value={currentdepartment} onChange={handleChange} placeholder='Department'/>) 
                     : (<p>{currentdepartment}</p>)
                 }
                 
                 <p>{role}</p>
                 
                 {isEditing 
-                    ? (<input type="text" name="location"value={currentlocation} onChange={handleChange} />) 
+                    ? (<input type="text" name="location" value={currentlocation} onChange={handleChange} placeholder='Location' />) 
                     : (<p>{currentlocation}</p>)
                 }
                 
