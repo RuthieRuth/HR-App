@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import './formStyles.css'
 
-
-
+// FORM COMPONENT
 //possible to also store each input as a variable with useState
 const Form = () => {
     const [newDetails, setNewDetails] = useState(
@@ -25,20 +24,23 @@ const Form = () => {
 
     
 // SUBMIT THE FORM 
-    const submitBtn = () => {
+    const submitBtn = (event) => {
+        
+        event.preventDefault();  // move into submitBtn '?
         //needs to be added to the list
-        (axios.post("http://localhost:3001/persons", newDetails)
+        (axios.post("http://localhost:3002/persons", newDetails)
         .then((response) => {
             console.log("Data posted successfully:", response.data);
+            
             })
+          
         .catch((error) => {
              console.error("Error posting data:", error);
     }));
 
-
+        
     }
 
-        event.preventDefault(); // move into submitBtn '?
 
     return (
         <div className="form-container">
@@ -85,7 +87,7 @@ const Form = () => {
                 </div>
 
                 <div className="form-input"></div>
-                <button> Submit </button>
+                <button type='submit'> Submit </button>
                 {/* <input type="submit" value="Submit"/>  OR THIS*/}
                 
             </form>
