@@ -25,13 +25,13 @@ const Form = () => {
     
 // SUBMIT THE FORM 
     const submitBtn = (event) => {
-        
         event.preventDefault();  // move into submitBtn '?
+        
         //needs to be added to the list
         (axios.post("http://localhost:3002/persons", newDetails)
         .then((response) => {
             console.log("Data posted successfully:", response.data);
-            
+
             })
           
         .catch((error) => {

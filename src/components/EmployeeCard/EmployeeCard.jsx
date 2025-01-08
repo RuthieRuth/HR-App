@@ -4,6 +4,8 @@ import Button from '../Button/Button';
 import star from "../../assets/star.svg"
 import calcYrsWorked from '../data/yrCalculator';
 import { useNavigate } from 'react-router-dom';
+
+
 // import EmployeeList from '../EmployeeList/EmployeeList';
 
     const EmployeeCard = ({name, dept, start, location, email, status, role, id}) => { 
@@ -15,17 +17,21 @@ import { useNavigate } from 'react-router-dom';
 
         const [promotedRole, setPromotedRole] = useState (role);
         const navigate = useNavigate();
+
        
-        // const [images, setImages]=useState([]);
+    
+
+
          
-        // PROMOTE AND DEMOTE TOGGLE BUTTON
+        // HANDLE PROMOTE/DEMOTE TOGGLE BUTTON
         const clickHandler = () => {
         //console.log('I was clicked');
             setPromotedRole(promotedRole === 'Team Lead' ? role : 'Team Lead')
         }; 
 
+        //TOGGLE EDIT MODE
         const toggleEdit = () => setIsEditing ( (prev) => !prev );
-        // const handleChange = (event) => setLocation(event.target.value);
+       
 
         const handleChange = (event) => { 
             const {name, value} = event.target;
@@ -79,6 +85,10 @@ import { useNavigate } from 'react-router-dom';
                 fetchEmployee();
             }, []);
 
+            
+            
+        
+
         return (       
             <div className='cardTemplate' style={colorCard}>  
 
@@ -111,7 +121,7 @@ import { useNavigate } from 'react-router-dom';
                 <p>{email}</p>
                 
                 <div>
-                    {`${yearsWorked}yrs today. ${reviewMessage}`}
+                    <em>{`${yearsWorked}yrs today. ${reviewMessage}`}</em>
                 </div> 
 
                 <div className='buttons'>
@@ -120,9 +130,11 @@ import { useNavigate } from 'react-router-dom';
                         text={promotedRole === role ? "Team Lead Promotion" : "Remove as Team Lead"} 
                         roleColor={promotedRole === role ? 'primary' : 'secondary'}/>
 
-                    <Button 
+                     <Button 
                         onClick={() => {toggleEdit(); console.log("showing me");}} 
                         text={isEditing ? 'Save' : 'Edit'} />
+ 
+                 
 
                      {/* <Button onClick = {clickHandler} text={editing ? "Save": "Edit"}/>  */}
 

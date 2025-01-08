@@ -23,7 +23,7 @@ import './EmployeeList.css';
       });
     }, []) */
 
-    // use axios with useEffect
+    // USING AXIOS WITH useEffect
     useEffect(() => {
       axios.get("http://localhost:3002/persons")
         .then((response) => {
@@ -34,9 +34,16 @@ import './EmployeeList.css';
           console.error("Error fetching data:", error);
         });
     }, []);
-
     // console.log (posts);
 
+     axios.patch("http://localhost:3002/persons", {department:'', location:''})
+        .then((response) => {
+          console.log("Data updated successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error updating data:", error);
+        });
+ 
    return (
 
       <div className='list'>

@@ -26,7 +26,6 @@ const PersonalEmployeePage = () => {
             <p>Status: {employee.status} </p>
 
             <Button text='Back to list' onClick={() => navigate(-1)} />
-                {/* -1 takes it to log in but /list takes it back to list with no log out btn, why? */}
         </div>
     )
 };
