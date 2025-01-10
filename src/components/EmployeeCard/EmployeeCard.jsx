@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import star from "../../assets/star.svg"
 import calcYrsWorked from '../data/yrCalculator';
 import { useNavigate } from 'react-router-dom';
-
+import { useUpdateEmployee } from '../../../useAxios';
 
 // import EmployeeList from '../EmployeeList/EmployeeList';
 
@@ -18,11 +18,9 @@ import { useNavigate } from 'react-router-dom';
         const [promotedRole, setPromotedRole] = useState (role);
         const navigate = useNavigate();
 
+        const {updateEmployee, isUpdating} = useUpdateEmployee();
+
        
-    
-
-
-         
         // HANDLE PROMOTE/DEMOTE TOGGLE BUTTON
         const clickHandler = () => {
         //console.log('I was clicked');
@@ -41,6 +39,20 @@ import { useNavigate } from 'react-router-dom';
                 setLocation(value);
             }
         };
+
+        const saveChanges = async () => {
+            try {
+              await updateEmployee(id, {
+                department: currentDepartment,
+                location: currentLocation,
+              });
+              setIsEditing(false); // Exit edit mode after saving
+              console.log("Changes saved successfully!");
+            } catch (err) {
+              console.error("Error saving changes:", err);
+            }
+          };
+          
 
         // DEPARTMENT COLOUR CHANGE
         const colorCard = {
@@ -85,9 +97,6 @@ import { useNavigate } from 'react-router-dom';
                 fetchEmployee();
             }, []);
 
-            
-            
-        
 
         return (       
             <div className='cardTemplate' style={colorCard}>  
@@ -131,12 +140,12 @@ import { useNavigate } from 'react-router-dom';
                         roleColor={promotedRole === role ? 'primary' : 'secondary'}/>
 
                      <Button 
-                        onClick={() => {toggleEdit(); console.log("showing me");}} 
-                        text={isEditing ? 'Save' : 'Edit'} />
- 
-                 
-
-                     {/* <Button onClick = {clickHandler} text={editing ? "Save": "Edit"}/>  */}
+                        /* onClick={ () => {toggleEdit(); console.log("showing me") ;}} 
+                        text={isEditing ? 'Save' : 'Edit'} />  */
+                    
+                     onClick={() => {if (isEditing) saveChanges(); toggleEdit();}}
+                     text={isEditing ? (isUpdating ? "Saving..." : "Save") : "Edit"}
+                     />
 
                      <Button text="See more" onClick={()=> navigate(`/list/${id}`)}/>
                      

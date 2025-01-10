@@ -13,9 +13,11 @@ export const useUpdateEmployee = () => {
     setIsUpdating(true);
     setError(null); // Clear any previous error
     try {
+
       const response = await axios.patch(`${API_BASE_URL}/${id}`, updatedFields);
       setIsUpdating(false);
       return response.data; // Return the updated data
+      
     } catch (err) {
       setIsUpdating(false);
       setError(err);
