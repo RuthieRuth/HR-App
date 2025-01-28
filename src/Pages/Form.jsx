@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import './formStyles.css'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 // FORM COMPONENT
 //possible to also store each input as a variable with useState
 const Form = () => {
@@ -28,7 +30,7 @@ const Form = () => {
         event.preventDefault();  // move into submitBtn '?
         
         //needs to be added to the list
-        (axios.post("http://localhost:3002/persons", newDetails)
+        (axios.post(`${API_URL}/persons`, newDetails)
         .then((response) => {
             console.log("Data posted successfully:", response.data);
 
