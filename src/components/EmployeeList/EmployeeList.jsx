@@ -12,6 +12,9 @@ import './EmployeeList.css';
     const [posts, setPosts] = useState ([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+    console.log("API URL:", API_URL);
+
 
     // using useEffect with fetch
    /*  useEffect (() => {
@@ -25,7 +28,8 @@ import './EmployeeList.css';
 
     // USING AXIOS WITH useEffect
     useEffect(() => {
-      axios.get("http://localhost:3002/persons")
+      //axios.get("http://localhost:3002/persons") formally this that was used during the making of this app
+      axios.get(`${API_URL}/persons`)
         .then((response) => {
           setPosts(response.data);
           setIsLoading(false);
@@ -36,7 +40,7 @@ import './EmployeeList.css';
     }, []);
     // console.log (posts);
 
-     axios.patch("http://localhost:3002/persons", {department:'', location:''})
+     axios.patch(`${API_URL}/persons`, { department: '', location: '' })
         .then((response) => {
           console.log("Data updated successfully:", response.data);
         })
